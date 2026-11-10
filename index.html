@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التعليم والمسابقات - الصف الثالث الإعدادي</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">
+            <span class="logo-icon">🎓</span>
+            <h1>الدرع التعليمي <span>3 إعدادي</span></h1>
+        </div>
+        <div class="user-stats">
+            <div class="stat-badge"><span class="icon">⭐</span> <span id="points-count">0</span> نقطة</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- قسم اختيار المادة والدرس -->
+        <section id="selection-section" class="card">
+            <h2>اختر المادة والدرس</h2>
+            <div class="subject-toggle">
+                <button class="btn-subject active" data-subject="science">🧪 العلوم</button>
+                <button class="btn-subject" data-subject="studies">🌍 الدراسات الاجتماعية</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="lesson-select">الدرس:</label>
+                <select id="lesson-select" class="custom-select">
+                    <!-- سيتم تعبئته ديناميكياً -->
+                </select>
+            </div>
+
+            <button id="start-quiz-btn" class="btn btn-primary btn-block">ابدأ الاختبار الآن 🚀</button>
+        </section>
+
+        <!-- قسم الاختبار -->
+        <section id="quiz-section" class="card hidden">
+            <div class="quiz-header">
+                <span id="quiz-tag" class="tag">العلوم - الدرس الأول</span>
+                <div class="timer-box">⏱️ <span id="timer">25</span>s</div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <h3 id="question-text" class="question-text">جاري تحميل السؤال...</h3>
+
+            <div id="options-container" class="options-grid">
+                <!-- خيارات الإجابة -->
+            </div>
+
+            <div id="explanation-box" class="explanation-box hidden">
+                <h4>💡 التفسير العلمي / التاريخي:</h4>
+                <p id="explanation-text"></p>
+            </div>
+
+            <button id="next-btn" class="btn btn-secondary btn-block hidden">السؤال التالي ⬅️</button>
+        </section>
+
+        <!-- قسم النتيجة -->
+        <section id="result-section" class="card hidden">
+            <div class="result-hero">
+                <div class="trophy-icon">🏆</div>
+                <h2>أحسنت! أكملت الاختبار</h2>
+                <div class="score-display">
+                    <span id="final-score">0</span> / <span id="total-questions">0</span>
+                </div>
+                <p id="result-message">نتيجة ممتازة! واصل المذاكرة.</p>
+                <button id="restart-btn" class="btn btn-primary btn-block">اختبار جديد 🔄</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Supabase Integration Config Script -->
+    <script src="curriculum.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
